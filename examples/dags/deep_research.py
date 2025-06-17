@@ -3,7 +3,8 @@ This shows how to use the SDK to build a deep research agent.
 """
 
 import pendulum
-import requests
+from security import safe_requests
+
 try:
     from airflow.sdk import dag, task
 except ImportError:
@@ -19,7 +20,7 @@ async def get_page_content(url: str) -> str:
     """
     Get the content of a page.
     """
-    response = requests.get(url)
+    response = safe_requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
 
     distillation_agent = Agent(
