@@ -2,7 +2,8 @@ version = 1
 revision = 3
 requires-python = ">=3.10"
 resolution-markers = [
-    "python_full_version >= '3.13'",
+    "python_full_version >= '3.14'",
+    "python_full_version == '3.13.*'",
     "python_full_version == '3.12.*'",
     "python_full_version < '3.12'",
 ]
@@ -29,6 +30,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/7e/2d/e893dcfa041dab1d045abfc8898239747cde19881796640861609138d360/aiologic-0.14.0.tar.gz", hash = "sha256:c87925fa2bfe9ae292859e1094eb8fb6d456c8202a16405b0a44134803c8a791", size = 54275, upload-time = "2025-02-12T14:45:31.414Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/4d/1f/f797b684fb4e11a5066ab464b460b5cfdbaedea9c4a3d0f0afc8e894ada0/aiologic-0.14.0-py3-none-any.whl", hash = "sha256:cc59d39dc1d5e2575b4a6b5faf678b551fb0f910c7cb42e4c5f5689ffedcce78", size = 44516, upload-time = "2025-02-12T14:45:27.835Z" },
+]
+
+[[package]]
+name = "aiosmtplib"
+version = "5.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/e7/ad/240a7ce4e50713b111dff8b781a898d8d4770e5d6ad4899103f84c86005c/aiosmtplib-5.1.0.tar.gz", hash = "sha256:2504a23b2b63c9de6bc4ea719559a38996dba68f73f6af4eb97be20ee4c5e6c4", size = 66176, upload-time = "2026-01-25T01:51:11.408Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/37/82/70f2c452acd7ed18c558c8ace9a8cf4fdcc70eae9a41749b5bdc53eb6f45/aiosmtplib-5.1.0-py3-none-any.whl", hash = "sha256:368029440645b486b69db7029208a7a78c6691b90d24a5332ddba35d9109d55b", size = 27778, upload-time = "2026-01-25T01:51:10.026Z" },
 ]
 
 [[package]]
@@ -196,7 +206,8 @@ dependencies = [
     { name = "apache-airflow-providers-standard" },
     { name = "apache-airflow-task-sdk" },
     { name = "argcomplete" },
-    { name = "asgiref" },
+    { name = "asgiref", version = "3.8.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "asgiref", version = "3.11.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
     { name = "attrs" },
     { name = "cadwyn" },
     { name = "colorlog" },
@@ -253,14 +264,16 @@ wheels = [
 
 [[package]]
 name = "apache-airflow-providers-common-compat"
-version = "1.6.0"
+version = "1.14.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "apache-airflow" },
+    { name = "asgiref", version = "3.8.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "asgiref", version = "3.11.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/87/ae/947c6d3cfead50482797b8f056cfce9eac4681e98f4b70c108d23267a010/apache_airflow_providers_common_compat-1.6.0.tar.gz", hash = "sha256:f6aed86141041301d7df243f2b80bd94e12893971988db8ae1d54d4fb7763e21", size = 14676, upload-time = "2025-03-31T07:50:18.686Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f8/99/3852e08d1eecf36e152f57ce69d46fea95a903748b5d4d200b915efcb574/apache_airflow_providers_common_compat-1.14.3.tar.gz", hash = "sha256:1ecba0c30b4ac2c40983e9aa627927576f49e8d466fcabdf464d1f7c6e8c54f7", size = 39892, upload-time = "2026-04-13T23:21:11.702Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/92/40/b9ae723c601124897584ed0e7606fa148dbf0b2bfa626fc75285a67aba66/apache_airflow_providers_common_compat-1.6.0-py3-none-any.whl", hash = "sha256:5dce9d66b087e584f9f240270aa555dc31a7afea5980dbb6e76347d59994694e", size = 30411, upload-time = "2025-03-31T07:49:43.564Z" },
+    { url = "https://files.pythonhosted.org/packages/6e/59/eea9f8d9e66597842e0739854b7c841423a2589c2a3aeaec5f83151aded8/apache_airflow_providers_common_compat-1.14.3-py3-none-any.whl", hash = "sha256:269f48d21ff275d02c7db617d9e477aee6ad8eab39690f18b7342f1f3eba073b", size = 42396, upload-time = "2026-04-13T23:21:04.302Z" },
 ]
 
 [[package]]
@@ -292,15 +305,16 @@ wheels = [
 
 [[package]]
 name = "apache-airflow-providers-smtp"
-version = "2.0.3"
+version = "3.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
+    { name = "aiosmtplib" },
     { name = "apache-airflow" },
     { name = "apache-airflow-providers-common-compat" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/06/1b/bc09b39e9de44291931d9954567063c2fd382e4c14c2a8a73548d15811ad/apache_airflow_providers_smtp-2.0.3.tar.gz", hash = "sha256:dacac9713c7f176f14efbc6e3ba285644616e942576ad90e15832b25f867a59f", size = 44227, upload-time = "2025-04-19T17:31:20.358Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ee/17/e93e9ee9425d809e64f039de7a015b939b5b640f5577f9bebaafb66145d4/apache_airflow_providers_smtp-3.0.0.tar.gz", hash = "sha256:831269195c985f7a431dca0954dbdfe401eaf981f847a6bb8356894c6911c6e4", size = 47583, upload-time = "2026-04-26T19:25:23.049Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a8/7b/95c2f78837e10a20cd96cffeb3eb627e42de3f9a8ce3423b5ab33dcd522a/apache_airflow_providers_smtp-2.0.3-py3-none-any.whl", hash = "sha256:1ec210fcbaba4e4ca2a853bc9e0cb90c2c5e5a0797bee648ebc4f34069d84dd0", size = 21741, upload-time = "2025-04-19T17:30:27.76Z" },
+    { url = "https://files.pythonhosted.org/packages/77/a3/8bfa90c90ab31584efd836fdae9cf1024f5cdec4b27a76b8ae239ebfd58d/apache_airflow_providers_smtp-3.0.0-py3-none-any.whl", hash = "sha256:b9fb8669cd1494b317f51298b2731605e2e31efb7ee0101898cfc43843e438d5", size = 25962, upload-time = "2026-04-26T19:24:49.253Z" },
 ]
 
 [[package]]
@@ -352,12 +366,29 @@ wheels = [
 name = "asgiref"
 version = "3.8.1"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version == '3.13.*'",
+    "python_full_version == '3.12.*'",
+    "python_full_version < '3.12'",
+]
 dependencies = [
     { name = "typing-extensions", marker = "python_full_version < '3.11'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/29/38/b3395cc9ad1b56d2ddac9970bc8f4141312dbaec28bc7c218b0dfafd0f42/asgiref-3.8.1.tar.gz", hash = "sha256:c343bd80a0bec947a9860adb4c432ffa7db769836c64238fc34bdc3fec84d590", size = 35186, upload-time = "2024-03-22T14:39:36.863Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/39/e3/893e8757be2612e6c266d9bb58ad2e3651524b5b40cf56761e985a28b13e/asgiref-3.8.1-py3-none-any.whl", hash = "sha256:3e1e3ecc849832fe52ccf2cb6686b7a55f82bb1d6aee72a58826471390335e47", size = 23828, upload-time = "2024-03-22T14:39:34.521Z" },
+]
+
+[[package]]
+name = "asgiref"
+version = "3.11.1"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.14'",
+]
+sdist = { url = "https://files.pythonhosted.org/packages/63/40/f03da1264ae8f7cfdbf9146542e5e7e8100a4c66ab48e791df9a03d3f6c0/asgiref-3.11.1.tar.gz", hash = "sha256:5f184dc43b7e763efe848065441eac62229c9f7b0475f41f80e207a114eda4ce", size = 38550, upload-time = "2026-02-03T13:30:14.33Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/5c/0a/a72d10ed65068e115044937873362e6e32fab1b7dce0046aeb224682c989/asgiref-3.11.1-py3-none-any.whl", hash = "sha256:e8667a091e69529631969fd45dc268fa79b99c92c5fcdda727757e52146ec133", size = 24345, upload-time = "2026-02-03T13:30:13.039Z" },
 ]
 
 [[package]]
