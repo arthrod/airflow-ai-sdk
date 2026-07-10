@@ -22,7 +22,7 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 dependencies = [
-    "apache-airflow>=2.7.0",
+    "apache-airflow>=3.2.2",
     "typing-extensions>=4.0.0",
     "pydantic-ai-slim<0.1.0",
 ]
